@@ -10,11 +10,11 @@ const questionarioInicial = {
             { texto: "¿Sueles utilizar otros tipos de sonidos, como sonidos de la naturaleza, radio, TV u otro para concentrarte o relajarte?", opciones: ["Si suelo utilizar", "No"] },
             { texto: "Si respondiste que sí sueles utilizar otros tipos de sonidos, escribe cuál/es o escribe 'No' y continúa." },
             { texto: "¿Por qué escuchas música?", opcionesMultiples: ["Relajarme", "Concentrarme", "Mejorar mi estado de ánimo", "Entretenimiento", "Estimular la creatividad", "Pasar el tiempo", "Otros"] },
-            { texto: "¿Tocas algún instrumento musical o cantas?", opcionesMultiples: ["No", "Guitarra", "Piano", "Violín", "Batería", "Flauta", "Bajo", "Canto", "Otros"]},
+            { texto: "¿Tocas algún instrumento musical o cantas?", opcionesMultiples: ["No", "Alguna vez toque", "Guitarra", "Piano", "Violín", "Batería", "Flauta", "Bajo", "Canto", "Otros"]},
             { texto: "¿Cuántos años de formación musical tienes?", opciones: ["Ninguno", "Menos de 1 año", "Entre 1 y 3 años", "Entre 3 y 5 años", "Más de 5 años"]},
             { texto: "¿Recibiste formación musical formal (en una institución) o autodidacta?", opciones: ["Formación en una escuela de música", "Formación autodidacta", "Ambos", "No recibí formación musical"]},
             { texto: "¿Con qué frecuencia practicas música (ensayos, clases, etc.)?", opciones: ["No practico", "Menos de una vez por semana", "1 o 2 veces por semana", "3 a 5 veces por semana", "Todos los días"]},
-            { texto: "¿Has participado en grupos musicales, orquestas o coros?", opciones: ["Sí, regularmente", "Sí, ocasionalmente", "No, nunca"]}
+            { texto: "¿Has participado en grupos musicales, orquestas o coros?", opciones: ["Sí, regularmente", "Sí, ocasionalmente", "Si, hace mucho tiempo", "No, nunca"]}
         ];
 
         let index = 0;
