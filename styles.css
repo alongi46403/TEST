@@ -47,12 +47,7 @@ p {
     text-align: center;
 }
 
-ul {
-    list-style-type: disc;
-    list-style-position: inside;
-    text-align: center;
-    margin-bottom: 20px;
-}
+
 
 ul li {
     font-size: 14px;
