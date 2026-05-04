@@ -73,11 +73,18 @@ const questionarioInicial = {
                             }
                         }
                     });
+
+                    // --- ACÁ ESTÁ LA MAGIA ---
                     const label = document.createElement('label');
-                    label.textContent = opcion;
-                    preguntaDiv.appendChild(checkbox);
+                    label.style.cursor = 'pointer'; // Hace que el mouse se vea como una "manito" al pasar por arriba
+                    label.style.display = 'block'; // Hace que cada opción ocupe su propio renglón prolijamente
+                    label.style.marginBottom = '8px'; // Un poco de espacio entre opciones
+                    
+                    // Metemos el checkbox adentro del label, y después le sumamos el texto
+                    label.appendChild(checkbox);
+                    label.appendChild(document.createTextNode(" " + opcion));
+                    
                     preguntaDiv.appendChild(label);
-                    preguntaDiv.appendChild(document.createElement('br'));
                 });
             } else {
                 const input = document.createElement('input');
