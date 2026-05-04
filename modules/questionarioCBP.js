@@ -74,16 +74,12 @@ const questionarioCBP = {
             const puntuacionDeseabilidadSocial = calcularDeseabilidadSocial(respuestas);
             const resultadosPersonalidad = calcularPuntuaciones(respuestasInvertidas);
 
-            let resultadosTexto = `\n\nResultados:\nDeseabilidad Social: ${puntuacionDeseabilidadSocial} (${puntuacionDeseabilidadSocial > 3 ? 'Inválido' : 'Válido'})\n`;
-            for (const [factor, puntuacion] of Object.entries(resultadosPersonalidad)) {
-                resultadosTexto += `${factor}: ${puntuacion}\n`;
-            }
-
-            const blob = new Blob([respuestasTexto + resultadosTexto], { type: 'text/plain' });
-            const enlace = document.createElement('a');
-            enlace.href = URL.createObjectURL(blob);
-            enlace.download = 'respuestas_cuestionario_cb.txt';
-            enlace.click();
+            window.resultadosFinales.personalidad = {
+                respuestasCrudas: respuestas,
+                deseabilidadSocial: puntuacionDeseabilidadSocial,
+                valido: puntuacionDeseabilidadSocial <= 3,
+                factores: resultadosPersonalidad
+            };
         }
 
         function calcularResultados() {

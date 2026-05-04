@@ -30,12 +30,7 @@ const preguntasEstimulo = {
         let audio = new Audio();
 
         function guardarRespuestasEstimulo(estimulo, respuestas) {
-            const respuestasTexto = `Estímulo: ${estimulo}\n` + respuestas.map(([pregunta, respuesta]) => `${pregunta}: ${respuesta}`).join('\n') + '\n\n';
-            const blob = new Blob([respuestasTexto], { type: 'text/plain' });
-            const enlace = document.createElement('a');
-            enlace.href = URL.createObjectURL(blob);
-            enlace.download = 'respuestas_estimulos.txt';
-            enlace.click();
+            window.resultadosFinales.evaluacion_estimulos[estimulo] = respuestas;
         }
 
         function manejarTeclaEnter(event) {

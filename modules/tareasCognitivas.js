@@ -90,41 +90,8 @@ const tareasCognitivas = {
     },
 
     guardarResultados: function () {
-        const respuestas = {
-            memoria: this.respuestasMemoria,
-            stroop: this.respuestasStroop
-        };
-    
-        const estimulos = ["Música instrumental", "Música con letra", "Ruido blanco"];
-        
-        let contenidoTxt = "Resultados de las tareas cognitivas:\n\n";
-    
-        contenidoTxt += "Tarea de Memoria:\n";
-        for (const [version, respuestasMemoria] of Object.entries(respuestas.memoria)) {
-            const estimulo = estimulos[version - 1];
-            contenidoTxt += `Estímulo: ${estimulo}\n`;
-            respuestasMemoria.forEach((respuesta, index) => {
-                contenidoTxt += `Palabra ${index + 1}: ${respuesta}\n`;
-            });
-            contenidoTxt += "\n";
-        }
-    
-        contenidoTxt += "Tarea de Stroop:\n";
-        for (const [version, respuestasStroop] of Object.entries(respuestas.stroop)) {
-            const estimulo = estimulos[version - 1];
-            contenidoTxt += `Estímulo: ${estimulo}\n`;
-            respuestasStroop.forEach((respuesta, index) => {
-                const [palabra, color, respuestaUsuario] = respuesta;
-                contenidoTxt += `Palabra ${index + 1}: ${palabra} (Color: ${color}, Respuesta: ${respuestaUsuario})\n`;
-            });
-            contenidoTxt += "\n";
-        }
-    
-        const blob = new Blob([contenidoTxt], { type: 'text/plain' });
-        const enlaceDescarga = document.createElement('a');
-        enlaceDescarga.href = URL.createObjectURL(blob);
-        enlaceDescarga.download = 'resultados_tareas_cognitivas.txt';
-        enlaceDescarga.click();
-    }
+    window.resultadosFinales.memoria = this.respuestasMemoria;
+    window.resultadosFinales.stroop = this.respuestasStroop;
+}
     
 };

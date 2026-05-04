@@ -180,17 +180,7 @@ const questionarioInicial = {
         }
 
         function guardarRespuestas() {
-            const respuestasTexto = Object.entries(respuestas).map(([pregunta, respuesta]) => {
-                if (Array.isArray(respuesta)) {
-                    respuesta = respuesta.join(', ');
-                }
-                return `${pregunta}: ${respuesta}`;
-            }).join('\n');
-            const blob = new Blob([respuestasTexto], { type: 'text/plain' });
-            const enlace = document.createElement('a');
-            enlace.href = URL.createObjectURL(blob);
-            enlace.download = 'respuestas_cuestionario_inicial.txt';
-            enlace.click();
+    window.resultadosFinales.inicial = respuestas;
         }
 
         mostrarPregunta();
