@@ -29,7 +29,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function siguienteModulo(moduloSiguiente) {
-        console.log("Navegando a: ", moduloSiguiente); // Para rastrear la navegación
         switch (moduloSiguiente) {
             case 'personalidad':
                 cargarModulo(questionarioCBP);
@@ -38,7 +37,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 cargarModulo(preguntasEstimulo);
                 break;
             case 'tareasCognitivas':
-                console.log("Cargando tareasCognitivas...");
                 cargarModulo(tareasCognitivas);
                 break;
             case 'finalizar':
@@ -99,7 +97,8 @@ function enviarDatosAGoogleSheets() {
     const appContainer = document.getElementById("app-container");
     appContainer.innerHTML = `<h2>Guardando resultados...</h2><p>Por favor, no cierres esta pestaña.</p>`;
 
-    const urlScript = 'https://script.google.com/macros/s/AKfycbxXKbb9xXR9TBxvLlsXruJZ9_9WOb7DRbigiEepnTRVfjHlCMHo7bTnr_EFCRmen4yF/execI'; 
+    // ¡ACÁ PONÉ TU URL DEL SCRIPT DE GOOGLE!
+    const urlScript = 'TU_URL_DE_APPS_SCRIPT_AQUI'; 
     
     // Obtenemos los datos ordenados
     const datosAEnviar = formatearDatosParaExcel();
