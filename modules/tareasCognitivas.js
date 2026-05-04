@@ -83,8 +83,8 @@ const tareasCognitivas = {
                 this.mostrarInstrucciones(contenedor, siguienteIndiceVersion, callback);  // Pasar al siguiente índice en el orden aleatorio
             } else {
                 this.audio.pause();
-                if (callback) callback('finalizar');  // Asegurar que el callback esté definido
                 this.guardarResultados();  // Guardar resultados al finalizar todas las tareas
+                if (callback) callback('finalizar');  // Asegurar que el callback esté definido
             }
         });
     },

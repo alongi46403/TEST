@@ -1,5 +1,3 @@
-// app.js
-
 window.resultadosFinales = {
     inicial: {},
     personalidad: {},
@@ -50,21 +48,61 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 });
 
+// Esta función extrae cada respuesta y le pone un título para el Excel
+function formatearDatosParaExcel() {
+    let datosPlanos = {};
+
+    // 1. Inicial
+    for (let key in window.resultadosFinales.inicial) {
+        datosPlanos["Inicial - " + key] = window.resultadosFinales.inicial[key];
+    }
+
+    // 2. Personalidad
+    let pers = window.resultadosFinales.personalidad;
+    if (pers && pers.factores) {
+        datosPlanos["Personalidad - Deseabilidad"] = pers.deseabilidadSocial;
+        datosPlanos["Personalidad - Válido"] = pers.valido ? "Sí" : "No";
+        for (let f in pers.factores) {
+            datosPlanos["Personalidad - " + f] = pers.factores[f];
+        }
+    }
+
+    // 3. Estímulos
+    let estimulos = window.resultadosFinales.evaluacion_estimulos;
+    for (let est in estimulos) {
+        estimulos[est].forEach(r => {
+            datosPlanos[`Evaluación [${est}] - ${r[0]}`] = r[1];
+        });
+    }
+
+    // 4. Memoria
+    let memoria = window.resultadosFinales.memoria;
+    const nombresEstimulos = ["Música instrumental", "Música con letra", "Ruido blanco"];
+    for (let version in memoria) {
+        let nombreEst = nombresEstimulos[version - 1] || version;
+        datosPlanos[`Memoria [${nombreEst}]`] = memoria[version].join(", ");
+    }
+
+    // 5. Stroop
+    let stroop = window.resultadosFinales.stroop;
+    for (let version in stroop) {
+        let nombreEst = nombresEstimulos[version - 1] || version;
+        // Guarda el stroop así: "rojo(red)=amarillo | azul(blue)=azul"
+        let respuestasStroop = stroop[version].map(r => `${r[0]}(${r[1]})=${r[2]}`).join(" | ");
+        datosPlanos[`Stroop [${nombreEst}]`] = respuestasStroop;
+    }
+
+    return datosPlanos;
+}
+
 function enviarDatosAGoogleSheets() {
     const appContainer = document.getElementById("app-container");
     appContainer.innerHTML = `<h2>Guardando resultados...</h2><p>Por favor, no cierres esta pestaña.</p>`;
 
-    // ACÁ VAS A PEGAR LA URL DE TU GOOGLE APPS SCRIPT (Paso 7)
-    const urlScript = 'https://script.google.com/macros/s/AKfycbzdAyOi_EZQLMVhJ-tB2C477U8p4twRSDljk6qc4kfXXPzHRQuObou2E1CQlXsPkswA/exec'; 
+    const urlScript = 'https://script.google.com/macros/s/AKfycbxXKbb9xXR9TBxvLlsXruJZ9_9WOb7DRbigiEepnTRVfjHlCMHo7bTnr_EFCRmen4yF/execI'; 
     
-    // Preparamos los datos convirtiendo los objetos a JSON
-    const datosAEnviar = {
-        inicial: JSON.stringify(window.resultadosFinales.inicial),
-        personalidad: JSON.stringify(window.resultadosFinales.personalidad),
-        evaluacion_estimulos: JSON.stringify(window.resultadosFinales.evaluacion_estimulos),
-        memoria: JSON.stringify(window.resultadosFinales.memoria),
-        stroop: JSON.stringify(window.resultadosFinales.stroop)
-    };
+    // Obtenemos los datos ordenados
+    const datosAEnviar = formatearDatosParaExcel();
 
     fetch(urlScript, {
         method: 'POST',
@@ -72,9 +110,7 @@ function enviarDatosAGoogleSheets() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(datosAEnviar)
     }).then(() => {
-        appContainer.innerHTML = `
-            <h2>Experimento finalizado</h2>
-            <p class="pregunta">Los datos se han guardado correctamente. ¡Muchas gracias por participar!</p>`;
+        appContainer.innerHTML = `<h2>Experimento finalizado</h2><p>Los datos se han guardado correctamente. ¡Muchas gracias por participar!</p>`;
     }).catch(error => {
         console.error('Error:', error);
         appContainer.innerHTML = `<h2>Error</h2><p>Hubo un problema guardando los datos.</p>`;

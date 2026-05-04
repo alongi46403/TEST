@@ -80,7 +80,7 @@ const preguntasEstimulo = {
                     indicePreguntaEstimulo++;
                     mostrarPreguntasEstimulo();
                 } else {
-                    guardarRespuestasEstimulo(estimulos[indiceEstimulo].nombre, respuestasPreguntas);
+                    guardarRespuestasEstimulo(estimulos[indiceEstimulo].nombre, [...respuestasPreguntas]);
                     respuestasPreguntas = [];
                     indiceEstimulo++;
 
