@@ -98,7 +98,7 @@ function enviarDatosAGoogleSheets() {
     appContainer.innerHTML = `<h2>Guardando resultados...</h2><p>Por favor, no cierres esta pestaña.</p>`;
 
     // ¡ACÁ PONÉ TU URL DEL SCRIPT DE GOOGLE!
-    const urlScript = 'TU_URL_DE_APPS_SCRIPT_AQUI'; 
+    const urlScript = 'https://script.google.com/macros/s/AKfycbzr15X2sfandMf3B8zGv9Tbx2psp2tUzV69tgg0hznAIr3Qma9OmnL4XnLYKWnwS8Uf/exec'; 
     
     // Obtenemos los datos ordenados
     const datosAEnviar = formatearDatosParaExcel();
