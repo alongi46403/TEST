@@ -43,6 +43,12 @@ p {
     text-align: center;
 }
 
+li {
+    font-size: 14px;
+    color: black;
+    text-align: center;
+}
+
 textarea {
     width: 100%;
     padding: 10px;
@@ -56,9 +62,9 @@ textarea {
 #app-container {
     width: 100%;
     max-width: 800px;
-    margin: 10% auto;
+    margin: 0 auto;
     background-color: white;
-    padding: 30px;
+    padding: 10px;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     display: flex;
