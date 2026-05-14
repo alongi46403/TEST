@@ -3,8 +3,8 @@ window.resultadosFinales = {
     personalidad: {},
     evaluacion_estimulos: {},
     memoria: {},
-    stroop: {}
-    comentariosFinales: ""
+    stroop: {},
+    comentariosFinales: "",
     dispositivo: {}
 };
 
