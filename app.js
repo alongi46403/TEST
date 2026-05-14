@@ -8,6 +8,22 @@ window.resultadosFinales = {
     dispositivo: {}
 };
 
+function obtenerInfoDispositivo() {
+    return {
+        userAgent: navigator.userAgent,
+        plataforma: navigator.platform,
+        idioma: navigator.language,
+        resolucionPantalla: `${screen.width}x${screen.height}`,
+        tamañoVentana: `${window.innerWidth}x${window.innerHeight}`,
+        dispositivoMovil: /Mobi|Android/i.test(navigator.userAgent),
+        navegador: obtenerNavegador(),
+        sistemaOperativo: obtenerSistemaOperativo(),
+        nucleosCPU: navigator.hardwareConcurrency || "No disponible",
+        memoriaRAM: navigator.deviceMemory || "No disponible",
+        timestampInicio: new Date().toISOString()
+    };
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const appContainer = document.getElementById("app-container");
     const modalIntroduccion = document.getElementById("modal-introduccion");
@@ -168,21 +184,7 @@ function mostrarPantallaFinal() {
         });
 }
 
-function obtenerInfoDispositivo() {
-    return {
-        userAgent: navigator.userAgent,
-        plataforma: navigator.platform,
-        idioma: navigator.language,
-        resolucionPantalla: `${screen.width}x${screen.height}`,
-        tamañoVentana: `${window.innerWidth}x${window.innerHeight}`,
-        dispositivoMovil: /Mobi|Android/i.test(navigator.userAgent),
-        navegador: obtenerNavegador(),
-        sistemaOperativo: obtenerSistemaOperativo(),
-        nucleosCPU: navigator.hardwareConcurrency || "No disponible",
-        memoriaRAM: navigator.deviceMemory || "No disponible",
-        timestampInicio: new Date().toISOString()
-    };
-}
+
 
 function obtenerNavegador() {
     const ua = navigator.userAgent;
