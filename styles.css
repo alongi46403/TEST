@@ -223,3 +223,7 @@ color: grey;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     font-size: 1.1em;
 }
+
+.modal-contenido p {
+    text-align: justify;
+}
