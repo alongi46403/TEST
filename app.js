@@ -4,6 +4,8 @@ window.resultadosFinales = {
     evaluacion_estimulos: {},
     memoria: {},
     stroop: {}
+    comentariosFinales: ""
+    dispositivo: {}
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -14,6 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Esperar al clic en el modal para arrancar
     if(btnAceptar) {
         btnAceptar.addEventListener("click", function() {
+            window.resultadosFinales.dispositivo = obtenerInfoDispositivo();
             modalIntroduccion.style.display = "none";
             cargarModulo(questionarioInicial);
         });
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 cargarModulo(tareasCognitivas);
                 break;
             case 'finalizar':
-                enviarDatosAGoogleSheets();
+                mostrarPantallaFinal();
                 break;
         }
     }
@@ -90,6 +93,15 @@ function formatearDatosParaExcel() {
         datosPlanos[`Stroop [${nombreEst}]`] = respuestasStroop;
     }
 
+    // 6. Comentarios finales
+    datosPlanos["Comentarios Finales"] = window.resultadosFinales.comentariosFinales || "";
+    
+    // 7. Información del dispositivo
+    let disp = window.resultadosFinales.dispositivo;
+    for (let key in disp) {
+        datosPlanos["Dispositivo - " + key] = disp[key];
+    }
+
     return datosPlanos;
 }
 
@@ -100,6 +112,8 @@ function enviarDatosAGoogleSheets() {
     // ¡ACÁ PONÉ TU URL DEL SCRIPT DE GOOGLE!
     const urlScript = 'https://script.google.com/macros/s/AKfycbzr15X2sfandMf3B8zGv9Tbx2psp2tUzV69tgg0hznAIr3Qma9OmnL4XnLYKWnwS8Uf/exec'; 
     
+    window.resultadosFinales.dispositivo.timestampFin = new Date().toISOString();
+
     // Obtenemos los datos ordenados
     const datosAEnviar = formatearDatosParaExcel();
 
@@ -114,4 +128,81 @@ function enviarDatosAGoogleSheets() {
         console.error('Error:', error);
         appContainer.innerHTML = `<h2>Error</h2><p>Hubo un problema guardando los datos.</p>`;
     });
+}
+
+function mostrarPantallaFinal() {
+
+    const appContainer = document.getElementById("app-container");
+
+    appContainer.innerHTML = `
+        <h2>Finalización del test</h2>
+
+        <p class="pregunta">
+            Si lo deseas, puedes dejar comentarios sobre la experiencia,
+            dificultades técnicas, observaciones o cualquier aspecto
+            relacionado con el test.
+        </p>
+
+        <textarea 
+            id="comentarios-finales"
+            rows="6"
+            placeholder="Escribe aquí tus comentarios (opcional)..."
+        ></textarea>
+
+        <br><br>
+
+        <button id="btn-enviar-final">
+            Enviar resultados
+        </button>
+    `;
+
+    document
+        .getElementById("btn-enviar-final")
+        .addEventListener("click", () => {
+
+            const comentarios = document.getElementById("comentarios-finales").value;
+
+            window.resultadosFinales.comentariosFinales = comentarios;
+
+            enviarDatosAGoogleSheets();
+        });
+}
+
+function obtenerInfoDispositivo() {
+    return {
+        userAgent: navigator.userAgent,
+        plataforma: navigator.platform,
+        idioma: navigator.language,
+        resolucionPantalla: `${screen.width}x${screen.height}`,
+        tamañoVentana: `${window.innerWidth}x${window.innerHeight}`,
+        dispositivoMovil: /Mobi|Android/i.test(navigator.userAgent),
+        navegador: obtenerNavegador(),
+        sistemaOperativo: obtenerSistemaOperativo(),
+        nucleosCPU: navigator.hardwareConcurrency || "No disponible",
+        memoriaRAM: navigator.deviceMemory || "No disponible",
+        timestampInicio: new Date().toISOString()
+    };
+}
+
+function obtenerNavegador() {
+    const ua = navigator.userAgent;
+
+    if (ua.includes("Chrome") && !ua.includes("Edg")) return "Chrome";
+    if (ua.includes("Firefox")) return "Firefox";
+    if (ua.includes("Safari") && !ua.includes("Chrome")) return "Safari";
+    if (ua.includes("Edg")) return "Edge";
+
+    return "Desconocido";
+}
+
+function obtenerSistemaOperativo() {
+    const ua = navigator.userAgent;
+
+    if (ua.includes("Windows")) return "Windows";
+    if (ua.includes("Mac")) return "MacOS";
+    if (ua.includes("Linux")) return "Linux";
+    if (ua.includes("Android")) return "Android";
+    if (ua.includes("iPhone") || ua.includes("iPad")) return "iOS";
+
+    return "Desconocido";
 }

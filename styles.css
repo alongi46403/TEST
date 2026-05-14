@@ -105,8 +105,15 @@ div > label {
 }
 
 #app-container button {
-    width: 100px;
+    width: auto;
     margin: 0 20px;
+    min-width: 120px;
+    padding: 12px 24px;
+    white-space: nowrap;
+}
+
+button:active {
+    transform: scale(0.98);
 }
 
 /* Botones de navegación */

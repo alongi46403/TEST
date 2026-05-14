@@ -2,6 +2,7 @@ const questionarioInicial = {
     cargar: function (contenedor, callback) {
         const preguntas = [
             { texto: "¿Qué edad tienes?" },
+            { texto: "¿Cuál es tu género?", opciones: ["Masculino", "Femenino", "Prefiero no decirlo", "Otro"] },
             { texto: "¿En qué tipo de área vives?", opciones: ["Urbana", "Suburbana", "Rural", "Otro"] },
             { texto: "¿Cuál es tu nivel educativo?", opciones: ["Primaria incompleta", "Primaria completa", "Secundaria incompleta", "Secundaria completa", "Universitaria incompleta", "Universitaria completa", "Posgrado"] },
             { texto: "¿Cuál es tu ocupación?", opciones: ["Estudiante", "Profesional", "Trabajador autónomo", "Desempleado", "Jubilado", "Otro"] },
@@ -15,6 +16,13 @@ const questionarioInicial = {
             { texto: "¿Recibiste formación musical formal (en una institución) o autodidacta?", opciones: ["Formación en una escuela de música", "Formación autodidacta", "Ambos", "No recibí formación musical"]},
             { texto: "¿Con qué frecuencia practicas música (ensayos, clases, etc.)?", opciones: ["No practico", "Menos de una vez por semana", "1 o 2 veces por semana", "3 a 5 veces por semana", "Todos los días"]},
             { texto: "¿Has participado en grupos musicales, orquestas o coros?", opciones: ["Sí, regularmente", "Sí, ocasionalmente", "Si, hace mucho tiempo", "No, nunca"]}
+            { texto: "¿Tienes alguna discapacidad auditiva o condición médica que pueda afectar tu percepción del sonido?", opciones: ["Sí", "No"] },
+            { texto: "Si respondiste que sí, por favor especifica o escribe 'No' y continúa." }
+            { texto: "¿En qué tipo de entorno te encuentras realizando este test?", opciones: ["Habitación muy silenciosa", "Habitación con ruido leve", "Entorno moderadamente ruidoso", "Entorno muy ruidoso", "Exterior"]}
+            { texto: "¿Qué tipo de dispositivo estás utilizando para escuchar el test?", opciones: ["Auriculares in-ear (earbuds, )", "Auriculares on-ear (almohadilla apoyada a la oreja)", "Auriculares over-ear (cubre la oreja)", "Parlantes externos", "Otro"] }
+            { texto: "¿Cual es la marca y modelo del dispositivo que estás utilizando para escuchar el test?" }
+            { texto: "¿Tu dispositivo tiene cancelación activa de ruido?", opciones: ["Sí", "No", "No sé"] }
+            { texto: "Si posee ANC, la tienes activada durante el test?", opciones: ["Sí", "No", "No aplica"] }
         ];
 
         let index = 0;
