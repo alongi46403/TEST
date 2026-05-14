@@ -13,7 +13,7 @@ const tareaStroop = {
         }
 
         contenedor.innerHTML = `
-            <h2>Tarea Stroop: Di el color de la fuente, no la palabra escrita.</h2>
+            <h2>Tarea Stroop: Escribi el color de la fuente, no la palabra escrita.</h2>
             <div id="label-palabra-stroop"></div>
             <input type="text" id="input-respuesta" placeholder="Escribe tu respuesta..." style="display: none;"/>
             <button id="btn-enviar" style="display: none;">Enviar</button>
