@@ -105,7 +105,7 @@ const questionarioInicial = {
             }
 
             const botonesDiv = document.createElement('div');
-            botonesDiv.style.marginTop = '20px';
+            botonesDiv.className = 'botones-navegacion';
 
             if (index > 0) {
                 const btnAnterior = document.createElement('button');

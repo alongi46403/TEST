@@ -270,6 +270,7 @@ color: grey;
         width: 80%; /* Hace que los botones sean más cómodos de tocar */
         max-width: 250px;
         margin: 0; /* Limpia márgenes anteriores que puedan molestar */
+        align-self: center; /* Centra los botones dentro del div */
     }
 
     /* Solución para el texto de los auriculares que se sale de pantalla */
