@@ -258,7 +258,7 @@ color: grey;
     }
 
     /* Ajuste para los divs que contienen las preguntas y opciones */
-    #app-container div {
+    #app-container div:not(.botones-navegacion) {
         display: flex;
         flex-direction: column;
         align-items: flex-start; /* Alinea las opciones a la izquierda */
@@ -266,11 +266,21 @@ color: grey;
         box-sizing: border-box; /* Previene desbordamientos por padding */
     }
 
-    #app-container button {
+    #app-container .botones-navegacion button {
         width: 80%; /* Hace que los botones sean más cómodos de tocar */
         max-width: 250px;
         margin: 0; /* Limpia márgenes anteriores que puedan molestar */
         align-self: center; /* Centra los botones dentro del div */
+    }
+
+    #app-container .botones-navegacion {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        align-items: center !important;
+        justify-content: center;
+        width: 100%;
+        margin-top: 20px;
     }
 
     /* Solución para el texto de los auriculares que se sale de pantalla */
