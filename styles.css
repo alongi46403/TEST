@@ -48,7 +48,6 @@ p {
 }
 
 
-
 ul li {
     font-size: 14px;
     color: black;
@@ -219,10 +218,13 @@ color: grey;
 
 .modal-contenido {
     background-color: white;
-    padding: 50px;
-    border-radius: 10px;
+    padding: 30px;
+    border-radius: 12px;
+    box-sizing: border-box;
     max-width: 800px;
-    width: 90%;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
     text-align: justify;
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
     font-size: 1.1em;
@@ -230,4 +232,38 @@ color: grey;
 
 .modal-contenido p {
     text-align: justify;
+}
+
+#modal-introduccion {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+@media (max-width: 768px) {
+    .modal-contenido {
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    .modal-contenido h1, .modal-contenido h2, .modal-contenido h3 {
+        font-size: 24px;
+    }
+
+    .modal-contenido p, .modal-contenido li {
+        font-size: 16px;
+        line-height: 1.5;
+    }
+
+    #btn-aceptar {
+        width: 100%;
+        padding: 14px;
+        font-size: 18px;
+    }
 }
