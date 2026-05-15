@@ -19,7 +19,7 @@ const questionarioInicial = {
             { texto: "¿Tienes alguna discapacidad auditiva o condición médica que pueda afectar tu percepción del sonido?", opciones: ["Sí", "No"] },
             { texto: "Si respondiste que sí, por favor especifica o escribe 'No' y continúa." },
             { texto: "¿En qué tipo de entorno te encuentras realizando este test?", opciones: ["Habitación muy silenciosa", "Habitación con ruido leve", "Entorno moderadamente ruidoso", "Entorno muy ruidoso", "Exterior"]},
-            { texto: "¿Qué tipo de dispositivo estás utilizando para escuchar el test?", opciones: ["Auriculares in-ear (dentro del oido, ej.earbuds, )", "Auriculares on-ear (almohadilla apoyada sobre la oreja)", "Auriculares over-ear (cubre la oreja completa)", "No estoy usando auriculares"] },
+            { texto: "¿Qué tipo de dispositivo estás utilizando para escuchar el test?", opciones: ["Auriculares in-ear (dentro del oido, ej.earbuds)", "Auriculares on-ear (almohadilla apoyada sobre la oreja)", "Auriculares over-ear (cubre la oreja completa)", "No estoy usando auriculares"] },
             { texto: "¿Cual es la marca y modelo del dispositivo que estás utilizando para escuchar el test?" },
             { texto: "¿Tu dispositivo tiene cancelación activa de ruido?", opciones: ["Sí", "No", "No sé"] },
             { texto: "Si posee ANC, la tienes activada durante el test?", opciones: ["Sí", "No", "No aplica"] }
