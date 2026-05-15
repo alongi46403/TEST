@@ -248,12 +248,22 @@ color: grey;
         width: 95%;
     }
 
-    /* Ajuste para que los botones no se peguen */
-    .botones-navegacion, #app-container div {
+    /* Ajuste solo para los botones */
+    .botones-navegacion {
         display: flex;
-        flex-direction: column; /* Apila los botones uno arriba del otro */
-        gap: 15px; /* Crea una separación automática entre ellos */
+        flex-direction: column;
+        gap: 15px;
         align-items: center;
+        width: 100%;
+    }
+
+    /* Ajuste para los divs que contienen las preguntas y opciones */
+    #app-container div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; /* Alinea las opciones a la izquierda */
+        width: 100%; /* Asegura que no se salga del contenedor */
+        box-sizing: border-box; /* Previene desbordamientos por padding */
     }
 
     #app-container button {
@@ -268,11 +278,18 @@ color: grey;
         align-items: flex-start;
         text-align: left;
         width: 100%;
-        padding: 8px 10px;
+        padding: 5px 0px;
         font-size: 15px;
-        line-height: 1.3;
+        line-height: 1.4;
+        box-sizing: border-box;
         word-wrap: break-word; /* Fuerza el quiebre de palabras largas */
         overflow-wrap: break-word;
+    }
+
+    div > select, div > input[type="text"] {
+        width: 100%; /* Que ocupen todo el ancho disponible */
+        box-sizing: border-box;
+        margin: 10px 0; /* Quita el margen 'auto' que a veces da problemas */
     }
 
     /* Asegura que los checkboxes no se achiquen cuando el texto es largo */
