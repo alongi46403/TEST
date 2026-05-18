@@ -29,7 +29,7 @@ const questionarioInicial = {
                 }
             },
 
-            { texto: "¿Por qué escuchas música?", opcionesMultiples: ["Relajarme", "Concentrarme", "Mejorar mi estado de ánimo", "Entretenimiento", "Estimular la creatividad", "Pasar el tiempo", "Otros"] },
+            { texto: "¿Para qué escuchas música?", opcionesMultiples: ["Relajarme", "Concentrarme", "Mejorar mi estado de ánimo", "Entretenimiento", "Estimular la creatividad", "Pasar el tiempo", "Otros"] },
             { texto: "¿Tocas algún instrumento musical o cantas?", opcionesMultiples: ["No", "Guitarra", "Piano", "Violín", "Batería", "Flauta", "Bajo", "Canto", "Otros"]},
             { texto: "¿Cuántos años de formación musical tienes?", opciones: ["Ninguno", "Menos de 1 año", "Entre 1 y 3 años", "Entre 3 y 5 años", "Más de 5 años"]},
             { texto: "¿Recibiste formación musical formal (en una institución) o autodidacta?", opciones: ["Formación en una escuela de música", "Formación autodidacta", "Ambos", "No recibí formación musical"]},
