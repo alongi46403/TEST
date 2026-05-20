@@ -4,16 +4,7 @@ const questionarioInicial = {
             { texto: "¿Qué edad tienes?" },
             { texto: "¿En qué tipo de área vives?", opciones: ["Urbana", "Suburbana", "Rural", "Otro"] },
             { texto: "¿Cuál es tu nivel educativo?", opciones: ["Primaria incompleta", "Primaria completa", "Secundaria incompleta", "Secundaria completa", "Universitaria incompleta", "Universitaria completa", "Posgrado"] },
-            
-            // 1. CONDICIONAL: Área de estudio (Solo si tiene estudios superiores)
-            { 
-                texto: "¿Cuál es/fue tu área de estudio o carrera?", 
-                condicion: {
-                    dependeDe: "¿Cuál es tu nivel educativo?",
-                    valoresValidos: ["Universitaria incompleta", "Universitaria completa", "Posgrado"]
-                }
-            },
-
+            { texto: "¿Cuál es tu área de estudio o desempeño laboral?"},
             { texto: "¿Cuál es tu ocupación?", opciones: ["Estudiante", "Profesional", "Trabajador autónomo", "Desempleado", "Jubilado", "Otro"] },
             { texto: "¿Con qué frecuencia escuchas música?", opciones: ["Nunca", "Ocasionalmente", "Frecuentemente", "Siempre"] },
             { texto: "¿Qué tipo de música sueles escuchar cuando necesitas concentrarte?", opcionesMultiples: ["Clásica", "Pop", "Rock", "Electrónica", "Instrumental", "Folclore", "Lo-Fi", "Otros"] },
